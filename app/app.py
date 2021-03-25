@@ -8,6 +8,7 @@ from engine import game
 from multiprocessing import Pool,Process
 import threading
 import sqlite3
+import shutil
 
 app = Flask(__name__)
 app.secret_key = "Hole"
@@ -122,7 +123,11 @@ def Dashboard():
     cursor.execute(sql_fetch_, (session["text-color-1"],session["text-color-2"],session["text-color-3"],session["background-color"],session["text-font"], session["button-color-1"], session["button-color-2"],session["game_name"]))
     sqliteConnection.commit()
     cursor.close()
-    
+    if  os.path.isdir("/content/app/checkpoint/run1")== True:
+      try:
+        shutil.rmtree("/content/app/checkpoint/run1")
+      except OSError as e:
+        print("Error: %s : %s" % ("/content/app/checkpoint/run1", e.strerror))
     process(2)
     #data = game.generator(session["game_name"],session["epoch"])
     return redirect("preview_1")
@@ -132,6 +137,6 @@ def Dashboard():
 
 @app.route('/preview_1')
 def Preview_1():
-  return str(session["epoch"])
+  return "<h2>Preview</h2> under development"
 
 app.run()
