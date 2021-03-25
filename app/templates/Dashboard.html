@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/play.css')}}">
+        <title>D-Epic</title>
+    </head>
+    <body>
+      <form method=post enctype=multipart/form-data>
+        <div class="p-tabs">
+        <div class="Vid">
+            <label><h2>Sample Text</h2></label>
+            <p  id = "sample" name="sample">
+                {{data}}
+            </p>
+        </div>
+            <input checked="checked" id="tab1" type="radio" name="pct" />
+            <input id="tab2" type="radio" name="pct" />
+            <input id="tab3" type="radio" name="pct"/>
+            <nav>
+                <ul>
+                    <li class="tab1">
+                    <label for="tab1"><b>Customization</b></label>
+                    </li>
+                    <li class="tab2">
+                    <label for="tab2"><b>Fine-tunning</b></label>
+                    </li>
+                </ul>
+            </nav>
+            <section>
+                <div class="tab1">
+                    <h2>Customization</h2>
+                    <label>Select the background color</label>
+                    <input type = "color" name="background-color">
+                    <br>
+                    <br>
+                    <label>Select text color 1</label>
+                    <input type = "color" name="text-color-1">
+                    <br>
+                    <br>
+                    <label>Select text color 2</label>
+                    <input type = "color" name="text-color-2">
+                    <br>
+                    <br>
+                    <label>Select text color 3</label>
+                    <input type = "color" name="text-color-3">
+                    <br>
+                    <br>
+                    <label>Select button color 1</label>
+                    <input type="color" name="button-color-1">
+                    <br>
+                    <br>
+                    <label>Select button color 2</label>
+                    <input type="color" name="button-color-2">
+                    <br>
+                    <br>
+                    <label>Select font of text</label>
+                    <select name="font" id="font">
+                        <option value="Arial">Arial</option>
+                        <option value="Verdana ">Verdana </option>
+                        <option value="Helvetica">Helvetica</option>
+                        <option value="Tahoma">Tahoma</option>
+                        <option value="Trebuchet MS">Trebuchet MS</option>
+                        <option value="Times New Roman ">Times New Roman </option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Garamond">Garamond</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Brush Script MT">Brush Script MT</option>
+                    </select>
+                </div>
+                <div class="tab2">
+                    <h2>Fine-tunning</h2>
+                    <label>Number of Epoch:</label>
+                    <input list="epoch" name="epoch">
+                    <datalist id="epoch" name="epoch">
+                        <option value="100"></option>
+                        <option value="200"></option>
+                        <option value="300"></option>
+                        <option value="500"></option>
+                        <option value="700"></option>
+                        <option value="1000"></option>
+                    </datalist>
+                    <br>
+                    <br>
+                    <label>Select the model</label>
+                    <select name="model-name" id="model-name">
+                        <option value="124M">124M</option>
+                        <option value="774M">774M</option>
+                    </select>
+                </div>
+            </section>
+            <div class="inputBox">
+                <a href="/preview_1"><input type="submit" id="Done" value="Done"></a>
+            </div>
+        </div>
+      </form>
+    </body>
+</html>

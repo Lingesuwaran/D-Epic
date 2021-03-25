@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>D-Epic</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+</head>
+<body>
+  <form method=post enctype=multipart/form-data>
+    <div class="form">
+        <h2>Configure</h2>
+        <div class="input">
+            <div class="inputBox">
+                <label>Game Name</label>
+                <input type="text" id="game_name" name="game_name" required="required" placeholder="Enter your game name">
+            </div>
+            <div class="inputBox">
+                <label>Password</label>
+                    <input type="password" id="password" name="password" required="required" placeholder="Enter Password">
+            </div>
+            <div class="inputBox">
+                <label>Creator name</label>
+                <input type="text" id="creator_name" name="creator_name" required="required" placeholder="Enter the Creator name">
+            </div>
+            <div class="upload-btn-wrapper">
+                <button class="btn_file">Upload the story file</button>
+                <input type="file" name="file" required="required"/>
+            </div>
+            <div class="inputBox">
+              <a href="/Dashboard"><input type="submit" value="Done "></a>
+            </div>
+        </div>
+    </div>
+  </form>
+</body>
+</html>
+

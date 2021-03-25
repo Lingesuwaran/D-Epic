@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+    <title>D-Epic</title>
+</head>
+<body>
+  <form method=post enctype=multipart/form-data>
+    <div class="form">
+        <h2>Project</h2>
+        <div class="input">
+            <div class="inputBox">
+                <label>Game Name</label>
+                <input type="text" id="game_name" name="game_name" placeholder="Enter your game name">
+            </div>
+            <div class="inputBox">
+                <label>Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Password">
+            </div>
+            <div class="inputBox">
+                <input type="submit" name='' onclick="" value="Done ">
+            </div>
+        </div>
+    </div>
+  </form>
+</body>
+</html>
