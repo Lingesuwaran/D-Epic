@@ -10,7 +10,7 @@ class Database:
 
   def insertBLOB(game_name, password, creator_name, txt):
       try:
-          sqliteConnection = sqlite3.connect('./data/data.db')
+          sqliteConnection = sqlite3.connect('/content/D-Epic/app/data/data.db')
           cursor = sqliteConnection.cursor()
           print("Connected to SQLite")
           sqlite_insert_blob_query = """ INSERT INTO game_creator_data

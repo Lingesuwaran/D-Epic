@@ -14,7 +14,7 @@ def generator(data_1,data_2,data_3):
   epoch = data_2
   model = data_3
   db=Database.readBlobData(game_name)
-  file_name = "./data/data.txt"
+  file_name = "/content/D-Epic/app/data/data.txt"
 
   g=pyfiglet.figlet_format("Generating world...", font = "slant")
   print(Fore.BLACK + Style.DIM)

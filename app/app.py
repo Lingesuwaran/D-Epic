@@ -15,7 +15,7 @@ app.secret_key = "Hole"
 run_with_ngrok(app)
 
 
-UPLOAD_FOLDER = './data'
+UPLOAD_FOLDER = '/content/D-Epic/app/data'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def process(type_d):
@@ -56,7 +56,7 @@ def Configure():
       #filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       
-      db = Database.insertBLOB(game_name,password,creator_name, "./data/story.txt")
+      db = Database.insertBLOB(game_name,password,creator_name, "/content/D-Epic/app/data/story.txt")
       #data = game.Play(game_name)
       session["epoch"] = 10
       session["model"] = '124M'
@@ -71,7 +71,7 @@ def Existing_project():
       session["game_name"] = request.form["game_name"]
       session["password"] = request.form["password"]
 
-      sqliteConnection = sqlite3.connect('./data/data.db')
+      sqliteConnection = sqlite3.connect('/content/D-Epic/app/data/data.db')
       cursor = sqliteConnection.cursor()
       print("Connected to SQLite")
       sql_fetch_ = """SELECT * from game_creator_data where Game_name = ?"""
@@ -108,7 +108,7 @@ def Dashboard():
 
     session["button-color-1"] = request.form["button-color-1"]
     session["button-color-2"] = request.form["button-color-2"]
-    sqliteConnection = sqlite3.connect('./data/data.db')
+    sqliteConnection = sqlite3.connect('/content/D-Epic/app/data/data.db')
     cursor = sqliteConnection.cursor()
     print("Connected to SQLite")
     #sql_fetch_="""INSERT INTO game_creator_data where Game_name = ?
@@ -123,11 +123,11 @@ def Dashboard():
     cursor.execute(sql_fetch_, (session["text-color-1"],session["text-color-2"],session["text-color-3"],session["background-color"],session["text-font"], session["button-color-1"], session["button-color-2"],session["game_name"]))
     sqliteConnection.commit()
     cursor.close()
-    if  os.path.isdir("./checkpoint/run1")== True:
+    if  os.path.isdir("/content/D-Epic/app/checkpoint/run1")== True:
       try:
-        shutil.rmtree("./checkpoint/run1")
+        shutil.rmtree("/content/D-Epic/app/checkpoint/run1")
       except OSError as e:
-        print("Error: %s : %s" % ("./checkpoint/run1", e.strerror))
+        print("Error: %s : %s" % ("/content/D-Epic/app/checkpoint/run1", e.strerror))
     process(2)
     #data = game.generator(session["game_name"],session["epoch"])
     return redirect("preview_1")

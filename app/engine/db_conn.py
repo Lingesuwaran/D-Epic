@@ -8,7 +8,7 @@ def convertToBinaryData(filename):
 
 def writeTofile(data):
     # Convert binary data to proper format and write it on Hard Disk
-    with open("./data/data.txt", 'wb') as file:
+    with open("/content/D-Epic/app/data/data.txt", 'wb') as file:
       blobData = file.write(data)
     return blobData
     
@@ -17,7 +17,7 @@ class Database:
 
   def insertBLOB(game_name, password, creator_name, txt):
       try:
-          sqliteConnection = sqlite3.connect('./data/data.db')
+          sqliteConnection = sqlite3.connect('/content/D-Epic/app/data/data.db')
           cursor = sqliteConnection.cursor()
           print("Connected to SQLite")
           sqlite_insert_blob_query = """ INSERT INTO game_creator_data
@@ -40,7 +40,7 @@ class Database:
 
   def readBlobData(Game_name):
     try:
-        sqliteConnection = sqlite3.connect('./data/data.db')
+        sqliteConnection = sqlite3.connect('/content/D-Epic/app/data/data.db')
         cursor = sqliteConnection.cursor()
         print("Connected to SQLite")
 
