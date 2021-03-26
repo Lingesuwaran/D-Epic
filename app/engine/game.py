@@ -14,7 +14,7 @@ def generator(data_1,data_2,data_3):
   epoch = data_2
   model = data_3
   db=Database.readBlobData(game_name)
-  file_name = "/content/app/data/data.txt"
+  file_name = "./data/data.txt"
 
   g=pyfiglet.figlet_format("Generating world...", font = "slant")
   print(Fore.BLACK + Style.DIM)
@@ -65,6 +65,31 @@ def loader(game_name):
     story = story +i+'.'
   return str(story)
 
+def loader1(game_name,input1):
+  print(Fore.GREEN)
+  l=pyfiglet.figlet_format("Loading...", font = "slant")
+  print(Style.BRIGHT+l)
+  print(Fore.RESET)
+  sess = gpt2.start_tf_sess()
+  gpt2.load_gpt2(sess)
+
+  stories = gpt2.generate(sess,
+                length=100,
+                temperature=0.7,
+                prefix=input1,
+                nsamples=5,
+                batch_size=5,
+                top_k=40,
+                return_as_list=True
+                )
+    
+  print(Fore.RESET + Style.RESET_ALL)
+  story = ""
+  temp = stories[3].split(".")
+  del temp[-1]
+  for i in temp:
+    story = story +i+'.'
+  return str(story)
 
 
 

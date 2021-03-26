@@ -15,7 +15,7 @@ run_with_ngrok(app)
 def process():
   game_name = session["game_name"]
   input1 = session["input"]
-  p2 = game.loader(game_name,input1)
+  p2 = game.loader1(game_name,input1)
   return p2
 
 
@@ -24,9 +24,9 @@ def temp():
   if request.method =="POST":
     session["input"] = request.form["data"]
   else:
-    session["input"] = "I am Alice"
     session["game_name"] = input("Enter game name")
-    sqliteConnection = sqlite3.connect('/content/app/output/game_server/data/data.db')
+    session["input"] = "My name is "+ str(input("Enter character name"))
+    sqliteConnection = sqlite3.connect('/content/D-Epic/app/output/game_server/data/data.db')
     cursor = sqliteConnection.cursor()
     print("Connected to SQLite")
     #sql_fetch_="""INSERT INTO game_creator_data where Game_name = ?
