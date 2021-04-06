@@ -1,7 +1,7 @@
 import shutil
 
 list_dir = ["/content/D-Epic/app/data/data.db#..#/content/D-Epic/app/output/game_server/data/data.db","/content/D-Epic/app/engine/db_conn.py#..#/content/D-Epic/app/output/game_server/engine/db_conn.py",
-            "/content/D-Epic/app/engine/app.html#..#/content/D-Epic/app/output/game_server/templates/app.html","/content/D-Epic/app/engine/game.py#..#/content/D-Epic/app/output/game_server/engine/game.py"]
+            "/content/D-Epic/app/engine/game.py#..#/content/D-Epic/app/output/game_server/engine/game.py"]
 for i in list_dir:
   data = i.split("#..#")
   original = data[0]
