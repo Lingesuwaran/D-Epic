@@ -97,7 +97,24 @@ def Dashboard():
   if request.method =="POST":
     session["epoch"] = int(request.form["epoch"])
     session["model"] = str(request.form["model-name"])
+    if  os.path.isdir("/content/D-Epic/app/checkpoint/run1")== True:
+      try:
+        shutil.rmtree("/content/D-Epic/app/checkpoint/run1")
+      except OSError as e:
+        print("Error: %s : %s" % ("/content/D-Epic/app/checkpoint/run1", e.strerror))
+    process(2)
+    #data = game.generator(session["game_name"],session["epoch"])
+    return redirect("preview_1")
+  else:
+    data = process(0)
+    return render_template("Dashboard.html",data = data)
 
+@app.route('/preview_1',methods = {"GET","POST"})
+def Preview_1():
+  return render_template("preview.html")
+@app.route('/temp1',methods = {"GET","POST"})
+def temp1():
+  if request.method =="POST":
     session["text-color-1"] = request.form["text-color-1"]
     session["text-color-2"] = request.form["text-color-2"]
     session["text-color-3"] = request.form["text-color-3"]
@@ -123,20 +140,20 @@ def Dashboard():
     cursor.execute(sql_fetch_, (session["text-color-1"],session["text-color-2"],session["text-color-3"],session["background-color"],session["text-font"], session["button-color-1"], session["button-color-2"],session["game_name"]))
     sqliteConnection.commit()
     cursor.close()
-    if  os.path.isdir("/content/D-Epic/app/checkpoint/run1")== True:
-      try:
-        shutil.rmtree("/content/D-Epic/app/checkpoint/run1")
-      except OSError as e:
-        print("Error: %s : %s" % ("/content/D-Epic/app/checkpoint/run1", e.strerror))
-    process(2)
-    #data = game.generator(session["game_name"],session["epoch"])
-    return redirect("preview_1")
-  else:
-    data = process(0)
-    return render_template("Dashboard.html",data = data)
+    return render_template("temp1.html")
+  session["text-color-1"] = "#ffff"
+  session["text-color-2"] = "#ffff"
+  session["text-color-3"] = "#ffff"
 
-@app.route('/preview_1')
-def Preview_1():
-  return "<h2>Preview</h2> under development"
+  session["background-color"] = "#1231"
+
+  session["text-font"] = "Ariel"
+
+  session["button-color-1"] = "#ffff"
+  session["button-color-2"] = "#ffff"
+  return render_template("temp1.html")
+@app.route('/app_preview',methods = {"GET","POST"})
+def app_preview():
+  return render_template("app.html",text_color_1 = session["text-color-1"], text_color_2 = session["text-color-2"], text_color_3 = session["text-color-3"], background_color = session["background-color"], text_font = session["text-font"],button_color_1 = session["button-color-1"],button_color_2 = session["button-color-2"],game_story = session["game_name"])
 
 app.run()
